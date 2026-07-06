@@ -38,10 +38,6 @@ const HomeProductGrid: React.FC<HomeProductGridProps> = ({ onSelectProduct }) =>
   React.useEffect(() => {
     if (scrollRef.current) {
       const cardWidth = 380 + 40;
-      const initialScroll = (products.length * cardWidth) + (cardWidth / 2); // Start of middle loop
-      // Adjust to center the first item of middle loop in the viewport logic handled in scroll
-      // A Simple center alignment:
-      const containerWidth = scrollRef.current.offsetWidth;
       // We want index 9 (start of middle set) to be roughly centered or just present
       // Let's scroll to the start of the middle set
       scrollRef.current.scrollLeft = (products.length * cardWidth);
@@ -55,7 +51,6 @@ const HomeProductGrid: React.FC<HomeProductGridProps> = ({ onSelectProduct }) =>
       const scrollPos = scrollEl.scrollLeft;
       const cardWidth = 380 + 40;
       const singleSetWidth = products.length * cardWidth;
-      const totalWidth = singleSetWidth * 3;
 
       // Infinite Loop Logic: Jump scroll position implicitly
       if (scrollPos < singleSetWidth / 2) {
